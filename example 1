@@ -1,0 +1,25 @@
+import PyPDF2
+import re
+file=open("sample.pdf",'rb')
+reader=PyPDF2.PdfReader(file)
+#PRINTING NUMBER OF PAGES IN A PDF
+length_of_pdf=len(reader.pages)
+print(length_of_pdf)
+#SEARCH TERM
+search='And'
+#List of tuples(all occurences, page number)
+list_pages=[]
+for i in range(length_of_pdf):
+    current_page=reader.pages[i]
+    text=current_page.extract_text()
+    if re.findall(search,text):
+        count_page=len(re.findall(search,text))
+        list_pages.append((count_page,i))
+#Final Result
+print(list_pages)
+#Number of pages that contains the search keyword
+count=len(list_pages)
+print(count)
+#Total word count on all pages
+total=sum([tup[0] for tup in list_pages])
+print(f"The word '{search}' was found {total} times on {count} pages")

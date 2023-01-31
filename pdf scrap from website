@@ -1,0 +1,18 @@
+import requests
+from bs4 import BeautifulSoup
+try:
+    url=('https://file-examples.com/index.php/sample-documents-download/sample-pdf-download/')
+    response=requests.get(url)
+    content=BeautifulSoup(response.text,'html.parser')
+
+#  Extract URLs containing the PDF Documents
+    all_urls=content.find_all('a')
+    pdf_urls=[]
+    for url in all_urls:
+        try:
+            if 'pdf' in url['href']:
+                print(url['href'])
+        except:
+            pass
+except:
+    pass

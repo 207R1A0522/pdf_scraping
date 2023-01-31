@@ -1,0 +1,3 @@
+	WEB SCRAPING
+1)Scraping on Web pages using BS and Selenium
+2)Scraping PDF files using PyPDF2 and re(regex)

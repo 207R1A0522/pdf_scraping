@@ -1,0 +1,11 @@
+import PyPDF2
+import re
+file=open("DCCN.pdf",'rb')
+reader=PyPDF2.PdfReader(file)
+#PRINTING NUMBER OF PAGES IN A PDF
+length_of_pdf=len(reader.pages)
+print(length_of_pdf)
+page1=reader.pages[9]
+#EXTRACTING DATA FROM A PARTICULAR FILE
+page1data=page1.extract_text()
+print(page1data)
